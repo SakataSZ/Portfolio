@@ -51,7 +51,7 @@ function ResponsiveDrawer(props) {
             {title}
           </Typography>
 
-          <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+          <Box sx={{ display: {xs: 'none', sm: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button variant='inherit' href={page.path} key={page.name}>
                 {page.name}
@@ -66,7 +66,7 @@ function ResponsiveDrawer(props) {
             edge="start"
             onClick={handleDrawerToggle}
           >
-            <MenuIcon sx={{ display: { sm: 'none' } }} />
+            <MenuIcon sx={{ display: { md: 'none' } }} />
           </IconButton>
         </Toolbar>
       </AppBar>
