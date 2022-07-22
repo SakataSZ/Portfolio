@@ -5,7 +5,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ResponsiveDrawer from './components/ResponsiveDrower';
 
-const baseURL = process.env.PUBLIC_URL
+// const baseURL = process.env.PUBLIC_URL
+const baseURL = '';
 
 const pages = [
   {name: 'Home', path: baseURL + '/', element: <Home />},
