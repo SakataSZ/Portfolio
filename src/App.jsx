@@ -2,18 +2,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
-import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import ResponsiveDrawer from './components/ResponsiveDrower';
+
+const pages = [
+  {name: 'Home', path: '/', element: <Home />},
+  {name: 'About', path: '/about/', element: <About />},
+  {name: 'Contact', path: '/contact/', element: <Contact />}
+]
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ResponsiveDrawer pages={pages}/>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about/' element={<About />} />
-          <Route path='/portfolio/' element={<Portfolio />} />
-          <Route path='/contact/' element={<Contact />} />
+          {pages.map((page) => (
+            <Route path={page.path} element={page.element} key={page.name} />
+          ))}
         </Routes>
       </BrowserRouter>
     </div>
