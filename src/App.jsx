@@ -5,7 +5,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ResponsiveDrawer from './components/ResponsiveDrower';
 
-const homeUrl = process.env.PUBLIC_URL;
+const homeUrl = ''
 
 const pages = [
   {name: 'Home', path: homeUrl + '/', element: <Home />},
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           {/* for local */}
           <Route path='/' element={<Home />} />
-          
+
           {pages.map((page) => (
             <Route path={page.path} element={page.element} key={page.name} />
           ))}
