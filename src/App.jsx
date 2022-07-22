@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <ResponsiveDrawer pages={pages} />
+        <ResponsiveDrawer pages={pages}/>
         <Routes>
           {pages.map((page) => (
             <Route path={page.path} element={page.element} key={page.name} />

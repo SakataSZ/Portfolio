@@ -68,7 +68,6 @@ export const Home = () => {
                 <Root>
                   <Typography
                     variant='h3'
-                    component='h2'
                     sx={{
                       fontFamily: 'Roboto',
                       fontWeight: 700,
@@ -77,21 +76,29 @@ export const Home = () => {
                     }}
                   >
                     Welcom to
-                    <Typography
-                      color='primary'
-                      variant='h3'
-                      component='h2'
-                      sx={{
-                        fontFamily: 'Roboto',
-                        fontWeight: 700,
-                        letterSpacing: '.3rem',
-                        lineHeight: '5rem'
-                      }}>SakataSZ</Typography>
-                    Portforio!
+                  </Typography>
+                  <Typography
+                    color='primary'
+                    variant='h3'
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontWeight: 700,
+                      letterSpacing: '.3rem',
+                      lineHeight: '5rem'
+                    }}>SakataSZ
+                  </Typography>
+                  <Typography
+                    variant='h3'
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontWeight: 700,
+                      letterSpacing: '.3rem',
+                      lineHeight: '5rem'
+                    }}
+                  >Portforio!
                   </Typography>
                   <Typography
                     variant='body2'
-                    component='h2'
                     sx={{
                       pt: 5,
                       fontFamily: 'Roboto',
@@ -114,7 +121,7 @@ export const Home = () => {
         </div>
 
         <div className='container'>
-          <Box paddingX={5} paddingY={10} className='hoge'>
+          <Box paddingX={5} paddingY={10}>
             <Box marginBottom={10}>
               <Typography variant='h4' textAlign={'center'} color='#212b36'>
                 About this page
@@ -122,7 +129,7 @@ export const Home = () => {
             </Box>
             <Grid container spacing={5}>
               {cards.map((card) => (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4} key={card.text}>
                   <Card elevation={10} sx={{ borderRadius: '16px', height: 550 }}>
                     <CardContent>
                       <Box marginX={3} marginY={3}>
