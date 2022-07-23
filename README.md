@@ -1,4 +1,4 @@
-# React + Material UI
+# React + Material UI + react-router-dom
 
 ## npm list
 ├── @emotion/react@11.9.3   
@@ -16,24 +16,42 @@
 
 ## Github Pages + react-router-dom
 * Add `404.html` in `/docs/`
-  * Add the following script to `package.json`  
-    ```json:package.json
-    "rm": "rm -rf docs",
-    "mv": "mv build docs",
-    "cp" : "cp 404.html docs",
-    "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run cp && npm run git"
-    ```
 
-  * Add the following script after `/public/index.html`
-    ```html:/public/index.html
-    <script>
-    (function () {
-      const query = window.location.search;
-      if (query.startsWith('?p=')) {
-        const route = decodeURIComponent(query.substr(3));
-        window.history.replaceState(null, null, route);
-      }
-    })();
+* Add the following script to `package.json`  
+  ```json:package.json
+  "rm": "rm -rf docs",
+  "mv": "mv build docs",
+  "cp" : "cp 404.html docs",
+  "git": "git add . && git commit && git push origin master",
+  "deploy": "npm run rm && npm run build && npm run mv && npm run cp && npm run git"
+  ```
+
+* Add the following script after the `<title>` of `/public/index.html`
+  ```html:/public/index.html
+  <script>
+  (function () {
+    const query = window.location.search;
+    if (query.startsWith('?p=')) {
+      const route = decodeURIComponent(query.substr(3));
+      window.history.replaceState(null, null, route);
+    }
+  })();
   </script>
-  
+  ```
+
+* Append the repository name before the root path of react-router-dom
+  ```javascript
+  const PUBLIC_URL = process.env.PUBLIC_URL
+
+  function App() {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path=PUBLIC_URL+'/' element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
+  ```
