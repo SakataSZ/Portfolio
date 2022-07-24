@@ -92,7 +92,6 @@ function ResponsiveDrawer(props) {
         </Drawer>
 
       </Box>
-      <Toolbar />
 
     </Box>
   );

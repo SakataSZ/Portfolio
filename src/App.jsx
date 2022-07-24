@@ -10,7 +10,6 @@ const baseURL = process.env.PUBLIC_URL
 
 const pages = [
   { name: 'Home', path: baseURL + '/', element: <Home /> },
-  { name: 'Test', path: baseURL + '/test', element: <Test /> },
   { name: 'About', path: baseURL + '/about', element: <About /> },
   { name: 'Contact', path: baseURL + '/contact', element: <Contact /> }
 ]
@@ -21,6 +20,7 @@ function App() {
       <BrowserRouter>
         <ResponsiveDrawer pages={pages}/>
         <Routes>
+          <Route path={baseURL + "/test"} element={<Test />} />
           {pages.map((page) => (
             <Route path={page.path} element={page.element} key={page.name} />
           ))}

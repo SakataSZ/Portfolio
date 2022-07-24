@@ -1,30 +1,18 @@
-import { CardContent } from '@mui/material';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import * as Icon from 'react-icons/fa';
-import { SiMaterialui } from 'react-icons/si';
-import '../../css/Home.css';
+import { CardContent, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import * as Icon from "react-icons/fa";
+import { SiMaterialui } from "react-icons/si";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import EyeChatch from "../templates/EyeChatch";
+import template from "./particles.json";
+import { styled } from "@mui/system";
+import "../../css/Home.css"
 
 const github_url = 'https://github.com/SakataSZ'
-
-const cards = [
-  {
-    title: 'React', icon: <Icon.FaReact size='12rem' color='#61dbfb' />,
-    text: 'このWEBページはReactを使用して作成されています. 各コンポーネントは再利用することができます.'
-  },
-  {
-    title: 'Material UI', icon: <SiMaterialui size='12rem' color='#007fff' />,
-    text: 'UI & UXのためにMaterial UIを使用しました. MUIを使用することで高速にデザインを設計することができます.'
-  },
-  {
-    title: 'Github Pages', icon: <Icon.FaGithub size='12rem' color='#211f1f' />,
-    text: 'Github Pagesは静的サイトのホスティングサービスです. 無料でWEBサイトを公開できます.'
-  },
-]
 
 const Root = styled('div')(({ theme }) => ({
   color: 'white',
@@ -33,36 +21,42 @@ const Root = styled('div')(({ theme }) => ({
   }
 }));
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#64d8cb',
-      main: '#26a69a',
-      dark: '#00766c',
-    },
-    secondary: {
-      light: '#bd9b8f',
-      main: '#8c6d62',
-      dark: '#5e4238',
-    },
-    text: {
-      primary: '#555555'
-    }
+const cards = [
+  {
+    title: "React",
+    icon: <Icon.FaReact size="12rem" color="#61dbfb" />,
+    text: "このWEBページはReactを使用して作成されています. 各コンポーネントは再利用することができます.",
   },
-  typography: {
-    fontFamily: "Roboto",
-    h4: {
-      fontWeight: 600
-    }
-  }
-})
+  {
+    title: "Material UI",
+    icon: <SiMaterialui size="12rem" color="#007fff" />,
+    text: "UI & UXのためにMaterial UIを使用しました. MUIを使用することで高速にデザインを設計することができます.",
+  },
+  {
+    title: "Github Pages",
+    icon: <Icon.FaGithub size="12rem" color="#211f1f" />,
+    text: "Github Pagesは静的サイトのホスティングサービスです. 無料でWEBサイトを公開できます.",
+  },
+];
 
-export const Home = () => {
+const Home = () => {
+  const particlesInit = async (main) => {
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {};
+
   return (
-    <div className='Home'>
-      <ThemeProvider theme={theme}>
-        <div className='header'>
-          <Grid container className='header-content'>
+    <>
+      <EyeChatch>
+        <Particles
+          id="tsparticles"
+          options={template}
+          init={particlesInit}
+          loaded={particlesLoaded}
+        />
+        
+        <Grid container className='header-content'>
             <Grid item xs={12} md={5}>
               <Box sx={{ marginX: 5 }} >
                 <Root>
@@ -118,42 +112,45 @@ export const Home = () => {
             <Grid item xs={0} md={7}>
             </Grid>
           </Grid>
-        </div>
 
-        <div className='container'>
-          <Box paddingX={5} paddingY={10}>
-            <Box marginBottom={10}>
-              <Typography variant='h4' textAlign={'center'} color='#212b36'>
-                About this page
-              </Typography>
-            </Box>
-            <Grid container spacing={5}>
-              {cards.map((card) => (
-                <Grid item xs={12} md={4} key={card.text}>
-                  <Card elevation={10} sx={{ borderRadius: '16px', height: 550 }}>
-                    <CardContent>
-                      <Box marginX={3} marginY={3}>
-                        <Box pb={4} display='flex' justifyContent='center'>
-                          {card.icon}
-                        </Box>
-                        <Typography variant='h4' textAlign='center' paddingBottom={5}>
-                          {card.title}
-                        </Typography>
-                        <Typography variant='body1' textAlign='center'>
-                          {card.text}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
+      </EyeChatch>
+
+      <div style={{ backgroundColor: "#ffffff" }}>
+        <Box paddingX={5} paddingY={10}>
+          <Box marginBottom={10}>
+            <Typography variant="h4" textAlign={"center"} color="#212b36">
+              About this page
+            </Typography>
           </Box>
-        </div>
-
-      </ThemeProvider >
-    </div >
-  )
-}
+          <Grid container spacing={5}>
+            {cards.map((card) => (
+              <Grid item xs={12} md={4} key={card.text}>
+                <Card elevation={10} sx={{ borderRadius: "16px", height: 550 }}>
+                  <CardContent>
+                    <Box marginX={3} marginY={3}>
+                      <Box pb={4} display="flex" justifyContent="center">
+                        {card.icon}
+                      </Box>
+                      <Typography
+                        variant="h4"
+                        textAlign="center"
+                        paddingBottom={5}
+                      >
+                        {card.title}
+                      </Typography>
+                      <Typography variant="body1" textAlign="center">
+                        {card.text}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </div>
+    </>
+  );
+};
 
 export default Home;
