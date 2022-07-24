@@ -1,16 +1,18 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import ResponsiveDrawer from './components/ResponsiveDrower';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
+import './css/App.css';
+import ResponsiveDrawer from './components/templates/ResponsiveDrower';
+import About from './components/pages/About';
+import Contact from './components/pages/Contact';
+import Home from './components/pages/Home';
+import Test from './components/pages/Test';
 
 const baseURL = process.env.PUBLIC_URL
 
 const pages = [
   { name: 'Home', path: baseURL + '/', element: <Home /> },
+  { name: 'Test', path: baseURL + '/test', element: <Test /> },
   { name: 'About', path: baseURL + '/about', element: <About /> },
-  { name: 'Contact', path: baseURL + '/contact/', element: <Contact /> }
+  { name: 'Contact', path: baseURL + '/contact', element: <Contact /> }
 ]
 
 function App() {
